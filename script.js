@@ -68,6 +68,9 @@ every.forEach(elems => {
 		return img
 	})
 })
+
+// main
+
 let root = document.querySelector('.root')
 function generetaProducts(products) {
 	root.innerHTML = ``
@@ -79,12 +82,19 @@ function generetaProducts(products) {
 	   <p>${item.description}</p> <br/>
 	   Рейтинг : ${item.rating}  <br/>
 	   <p>$${item.price}</p></p> 
-		<button class="add-cart">add to card</button>`
+	   <div class='btn_div'>
+	   <button class='every_btn'>добавить в избранное</button>
+		<button class="every_btn">добавить в корзину</button>
+		</div>
+		`
 		root.append(docelems)
 
 	})
 }
 generetaProducts(every)
+
+
+//category 
 
 let category = document.querySelector('.category')
 
@@ -101,6 +111,7 @@ function getCategory() {
 }
 getCategory(every)
 
+//filter
 
 let btn = document.querySelectorAll(".category");
 for (const elems of btn) {
@@ -110,7 +121,7 @@ for (const elems of btn) {
 	});
 }
 
-/// all
+/// all button
 
 let main = document.querySelector('.main')
 let div = document.createElement('div')
@@ -121,4 +132,21 @@ all.innerHTML = 'Сбросить фильтры'
 div.prepend(all)
 all.addEventListener('click', () => {
 	generetaProducts(every)
+})
+
+//sort 
+let sort = document.querySelector('.sort')
+sort.addEventListener('click', (e) => {
+	if (e.target.value == 'high') {
+		let sorty = every.sort((a, b) => b.price - a.price)
+		generetaProducts(sorty)
+	}
+	else if (e.target.value == 'low') {
+		let sorty = every.sort((a, b) => a.price - b.price)
+		generetaProducts(sorty)
+	}
+	else if (e.target.value == 'rating') {
+		let sorty = every.sort((a, b) => b.rating - a.rating)
+		generetaProducts(sorty)
+	}
 })
