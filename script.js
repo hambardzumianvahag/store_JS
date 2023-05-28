@@ -73,8 +73,12 @@ function generetaProducts(products) {
 	root.innerHTML = ``
 	products.forEach((item) => {
 		let docelems = document.createElement('div')
-		docelems.innerHTML = `<h1>${item.title}</h1>
-	   <img src=${item.thumbnail} class="images" /> <br> <span>${item.price}</span> <br>
+		docelems.innerHTML = `
+		<img src=${item.thumbnail} class="images" /> <br>
+	   <h1>${item.title}</h1>
+	   <p>${item.description}</p> <br/>
+	   Рейтинг : ${item.rating}  <br/>
+	   <p>$${item.price}</p></p> 
 		<button class="add-cart">add to card</button>`
 		root.append(docelems)
 
@@ -108,18 +112,13 @@ for (const elems of btn) {
 
 /// all
 
-let main=document.querySelector('.main')
+let main = document.querySelector('.main')
 let div = document.createElement('div')
 main.before(div)
 let all = document.createElement('button')
 all.className = 'all'
-all.innerHTML = 'Clear Filters'
+all.innerHTML = 'Сбросить фильтры'
 div.prepend(all)
 all.addEventListener('click', () => {
 	generetaProducts(every)
 })
-
-// let all=document.querySelector('.all')
-// all.addEventListener('click',()=>{
-// 	generetaProducts(every)
-// })
