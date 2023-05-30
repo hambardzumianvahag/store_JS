@@ -80,8 +80,9 @@ function generetaProducts(products) {
 		<img src=${item.thumbnail} class="images" /> <br>
 	   <h1>${item.title}</h1>
 	   <p>${item.description}</p> <br/>
+	   <p>Категория:${item.category}</p> <br/>
 	   Рейтинг : ${item.rating}  <br/>
-	   <p>$${item.price}</p></p> 
+	   <p>$${item.price}</p> 
 	   <div class='btn_div'>
 	   <button class='every_btn'>добавить в избранное</button>
 		<button class="every_btn">добавить в корзину</button>
@@ -104,18 +105,34 @@ function getCategory() {
 	category.innerHTML = ``
 	categories.forEach(elem => {
 		let ctg = document.createElement('div')
-		// ctg.innerHTML = `<input class=${elem} value=${elem} name='color' type='checkbox'/> ${elem}`
-		ctg.innerHTML = `<button>${elem}</button>`
+		// ctg.innerHTML = `<input class='checkb' value=${elem} name='color' type='checkbox'/> ${elem}`
+		ctg.innerHTML = `<button class='ctg_btn'>${elem}</button>`
+
 		category.append(ctg)
 	})
 }
 getCategory(every)
 
-//filter
 
-let btn = document.querySelectorAll(".category");
+
+//filter
+let btn = document.querySelectorAll('.ctg_btn')
+// let newfill
+// let array = []
+// let checkboxes = document.querySelectorAll('.checkb')
 for (const elems of btn) {
 	elems.addEventListener("click", (e) => {
+		console.log(e.target.name)
+		// if (e.target.checked) {
+		// 	newfill = every.filter(item => item.category == e.target.value)
+		// 	array.push(newfill)
+		// 	generetaProducts(newfill)
+		// }
+		// else {
+		// 	let x = array.flat()
+		// 	console.log(newfill)
+		// 	generetaProducts(x)
+		// }
 		let newfill = every.filter(item => item.category == e.target.innerHTML)
 		generetaProducts(newfill)
 	});
@@ -148,5 +165,32 @@ sort.addEventListener('click', (e) => {
 	else if (e.target.value == 'rating') {
 		let sorty = every.sort((a, b) => b.rating - a.rating)
 		generetaProducts(sorty)
+	}
+})
+
+/// favourite
+
+let fav_modal = document.querySelector('.fav-modal')
+let fav = document.querySelector('.fav')
+fav.addEventListener('click', () => {
+	fav_modal.style.display = 'block'
+})
+
+window.addEventListener('click', (e) => {
+	if (e.target == fav_modal) {
+		fav_modal.style.display = 'none'
+	}
+})
+
+/// order
+let order_modal = document.querySelector('.order-modal')
+let order = document.querySelector('.order')
+order.addEventListener('click', () => {
+	order_modal.style.display = 'block'
+})
+
+window.addEventListener('click', (e) => {
+	if (e.target == order_modal) {
+		order_modal.style.display = 'none'
 	}
 })
