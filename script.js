@@ -61,13 +61,6 @@ register.addEventListener('click', function () {
 ///object
 
 let every = products.products
-let img
-every.forEach(elems => {
-	elems.images.forEach(image => {
-		img = image
-		return img
-	})
-})
 
 // main
 
@@ -76,6 +69,7 @@ function generetaProducts(products) {
 	root.innerHTML = ``
 	products.forEach((item) => {
 		let docelems = document.createElement('div')
+		docelems.classList.add('each_div')
 		docelems.innerHTML = `
 		<img src=${item.thumbnail} class="images" /> <br>
 	   <h1>${item.title}</h1>
@@ -84,16 +78,14 @@ function generetaProducts(products) {
 	   Рейтинг : ${item.rating}  <br/>
 	   <p>$${item.price}</p> 
 	   <div class='btn_div'>
-	   <button class='every_btn'>добавить в избранное</button>
-		<button class="every_btn">добавить в корзину</button>
+	   <button class='fav_btn'>добавить в избранное</button>
+		<button class="add_btn">добавить в корзину</button>
 		</div>
 		`
 		root.append(docelems)
-
 	})
 }
 generetaProducts(every)
-
 
 //category 
 
@@ -105,8 +97,8 @@ function getCategory() {
 	category.innerHTML = ``
 	categories.forEach(elem => {
 		let ctg = document.createElement('div')
-		// ctg.innerHTML = `<input class='checkb' value=${elem} name='color' type='checkbox'/> ${elem}`
-		ctg.innerHTML = `<button class='ctg_btn'>${elem}</button>`
+		ctg.innerHTML = `<input class='checkb' value=${elem} name='color' type='checkbox'/> ${elem}`
+		// ctg.innerHTML = `<button class='ctg_btn'>${elem}</button>`
 
 		category.append(ctg)
 	})
@@ -116,27 +108,34 @@ getCategory(every)
 
 
 //filter
-let btn = document.querySelectorAll('.ctg_btn')
-// let newfill
-// let array = []
-// let checkboxes = document.querySelectorAll('.checkb')
-for (const elems of btn) {
-	elems.addEventListener("click", (e) => {
-		console.log(e.target.name)
-		// if (e.target.checked) {
-		// 	newfill = every.filter(item => item.category == e.target.value)
-		// 	array.push(newfill)
-		// 	generetaProducts(newfill)
-		// }
-		// else {
-		// 	let x = array.flat()
-		// 	console.log(newfill)
-		// 	generetaProducts(x)
-		// }
-		let newfill = every.filter(item => item.category == e.target.innerHTML)
-		generetaProducts(newfill)
-	});
-}
+
+
+let newfill
+let array = []
+let checkboxes = document.querySelectorAll('.checkb')
+checkboxes.forEach((e) => {
+	e.addEventListener('click', function () {
+		if (this.checked) {
+			array.push(this.value)
+			array.forEach((e) => {
+				newfill = every.filter(item => item.category == e)
+				generetaProducts(newfill)
+			})
+		}
+		else {
+			array = array.filter(e => e !== this.value)
+			array.forEach((e) => {
+				newfill = every.filter(item => item.category == e)
+				generetaProducts(newfill)
+			})
+		}
+		if (!array.length) {
+			generetaProducts(every)
+		}
+	})
+})
+
+
 
 /// all button
 
@@ -152,6 +151,7 @@ all.addEventListener('click', () => {
 })
 
 //sort 
+
 let sort = document.querySelector('.sort')
 sort.addEventListener('click', (e) => {
 	if (e.target.value == 'high') {
@@ -171,6 +171,10 @@ sort.addEventListener('click', (e) => {
 /// favourite
 
 let fav_modal = document.querySelector('.fav-modal')
+let fav_content = document.querySelector('.fav-modal-content')
+let fav_modal_section = document.createElement('div')
+fav_modal_section.classList.add('root')
+fav_content.append(fav_modal_section)
 let fav = document.querySelector('.fav')
 fav.addEventListener('click', () => {
 	fav_modal.style.display = 'block'
@@ -183,8 +187,14 @@ window.addEventListener('click', (e) => {
 })
 
 /// order
+
+let order_title = document.querySelector('.ord_title')
+let order_content = document.querySelector('.order-modal-content')
 let order_modal = document.querySelector('.order-modal')
 let order = document.querySelector('.order')
+let order_modal_section = document.createElement('div')
+order_modal_section.classList.add('root')
+order_content.append(order_modal_section)
 order.addEventListener('click', () => {
 	order_modal.style.display = 'block'
 })
@@ -194,3 +204,52 @@ window.addEventListener('click', (e) => {
 		order_modal.style.display = 'none'
 	}
 })
+
+
+///favourite
+
+let add_fav = document.querySelectorAll('.fav_btn')
+add_fav.forEach((item) => {
+	item.addEventListener('click', (e) => {
+		e.target.innerHTML = 'Удалить из избранного'
+		let div1 = e.target.parentNode.parentNode
+		let clone1 = div1.cloneNode(true)
+		fav_modal_section.append(clone1)
+		let new_btn1 = clone1.children[9].firstElementChild
+		console.log(e.target)
+		new_btn1.addEventListener('click', () => {
+			clone1.style.display = 'none'
+			e.target.style.display = 'block'
+			e.target.innerHTML = 'добавить в избранное'
+		})
+		e.target.style.display = 'none'
+	})
+})
+
+/// korzina
+
+let total = document.querySelector('#total')
+let count = 0
+let add_btn = document.querySelectorAll('.add_btn')
+add_btn.forEach((item, index) => {
+	item.addEventListener('click', (e) => {
+		e.target.innerHTML = 'удалить из корзины'
+		let div2 = e.target.parentNode.parentNode
+		let clone2 = div2.cloneNode(true)
+		order_modal_section.append(clone2)
+		let new_btn2 = clone2.children[9].lastElementChild
+		count += +every[index].price
+		new_btn2.addEventListener('click', () => {
+			clone2.style.display = 'none'
+			e.target.style.display = 'block'
+			e.target.innerHTML = 'добавить в корзину'
+			count = count - every[index].price
+			total.innerHTML = `Общая сумма - $${count}`
+		})
+		e.target.style.display = 'none'
+		total.innerHTML = `Общая сумма - $${count}`
+
+	})
+})
+
+

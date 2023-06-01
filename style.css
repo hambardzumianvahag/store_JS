@@ -221,7 +221,10 @@
 	background-color: rgb(0, 0, 0);
 	background-color: rgba(0, 0, 0, 0.4);
 }
-
+.fav-modal h1{
+	color: #34495e;
+	text-align: center;
+}
 .fav-modal-content {
 	width: 80%;
 	background-color: #fefefe;
@@ -250,7 +253,10 @@
 	padding: 28px;
 	border: 1px solid #888;
 }
-
+.order-modal h1{
+	color: #34495e;
+	text-align: center;
+}
 .root {
 	display: flex;
 	flex-wrap: wrap;
@@ -258,14 +264,14 @@
 	margin: 20px 40px;
 }
 
-.root div {
+.each_div {
 	width: 220px;
 	border-radius: 20px;
 	border: 2px solid #454F5B;
 	margin: 10px auto;
 }
 
-.root div img {
+.each_div img {
 	width: 216px;
 	border-radius: 20px;
 	height: 150px;
@@ -273,7 +279,7 @@
 	margin: 0 auto;
 }
 
-.root div button {
+.each_div button {
 	margin: 5px auto;
 	border: 2px solid #454F5B;
 	border-radius: 15px;
@@ -290,28 +296,28 @@
 	user-select: none;
 }
 
-.root div button:hover {
+.each_div button:hover {
 	color: #fff;
 	background-color: #454F5B;
 	box-shadow: #454F5B 0 8px 15px;
 	transform: translateY(-2px);
 }
 
-.root div button:active {
+.each_div button:active {
 	box-shadow: none;
 	transform: translateY(0);
 }
 
-.root div h1 {
+.each_div h1 {
 	text-align: center;
 	font-size: 20px;
 }
 
-.root div p {
+.each_div p {
 	margin-top: 10px;
 }
 
-.root div span {
+.each_div span {
 	display: flex;
 	justify-content: center;
 	align-items: center;
