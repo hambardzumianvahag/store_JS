@@ -326,8 +326,7 @@ function favBasket() {
 			new_btn1.innerHTML = 'удалить из избранного'
 			new_btn1.addEventListener("click", () => {
 				clickCount--
-				clone1.style.display = "none";
-				e.target.style.display = "block";
+				clone1.remove()
 				e.target.innerHTML = `добавить в избранное (${clickCount})`;
 			});
 			e.target.innerHTML = `добавить в избранное (${clickCount})`;
@@ -362,8 +361,7 @@ function itemBasket() {
 			e.target.innerHTML = `добавить в корзину (${clickCount})`;
 			new_btn2.addEventListener("click", () => {
 				clickCount--
-				clone2.style.display = "none";
-				e.target.style.display = "block";
+				clone2.remove()
 				e.target.innerHTML = `добавить в корзину (${clickCount})`;
 				sum = sum - every[index].price;
 				total.innerHTML = `Общая сумма - $${sum}`;

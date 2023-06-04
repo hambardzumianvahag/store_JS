@@ -16,7 +16,8 @@
 	justify-content: space-evenly;
 	align-items: center;
 	background-color: #454F5B;
-	/* width: 100%; */
+	width: 100%;
+	margin: 0 auto;
 	gap: 150px;
 	height: 44px;
 }
@@ -35,6 +36,7 @@
 	display: flex;
 	justify-content: center;
 	margin: 10px auto;
+	max-width: 1240px;
 	flex-direction: row;
 	align-items: center;
 	justify-content: space-between;
@@ -264,8 +266,6 @@
 .root {
 	display: flex;
 	flex-wrap: wrap;
-	width: 800px;
-	margin: 20px 40px;
 }
 
 .each_div {
@@ -341,7 +341,10 @@
 .main {
 	display: flex;
 	justify-content: space-between;
-	margin-top: 150px;
+	/* margin-top: 150px; */
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1240px;
 }
 
 
@@ -538,11 +541,6 @@ input[type="range"]::-moz-range-thumb {
 	transform: translateY(0);
 }
 
-.select {
-	float: right;
-	margin: 20px 70px;
-}
-
 select {
 	appearance: none;
 	outline: 0;
@@ -558,8 +556,8 @@ select {
 .select {
 	position: relative;
 	display: flex;
-	/* width: 20em;
-  height: 3em; */
+	float: right;
+	margin: 20px 70px;
 	border-radius: .25em;
 	overflow: hidden;
 }
