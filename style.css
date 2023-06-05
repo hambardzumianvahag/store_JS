@@ -263,6 +263,18 @@
 	text-align: center;
 }
 
+.select-section {
+	display: flex;
+	justify-content: space-between;
+	max-width: 1200px;
+	margin: 50px auto;
+	align-items: center;
+}
+
+.select-text {
+	color: #34495e;
+}
+
 .root {
 	display: flex;
 	flex-wrap: wrap;
@@ -556,8 +568,6 @@ select {
 .select {
 	position: relative;
 	display: flex;
-	float: right;
-	margin: 20px 70px;
 	border-radius: .25em;
 	overflow: hidden;
 }

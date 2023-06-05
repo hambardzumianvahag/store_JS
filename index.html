@@ -16,73 +16,80 @@
 			Обратный звонок
 		</a>
 	</div>
-	<div>
-		<section class="top-nav">
-			<div class="logo">
-				<img src="./icons/Logo.png" alt="">
-			</div>
-			<input id="menu-toggle" type="checkbox" />
-			<label class='menu-button-container' for="menu-toggle">
-				<div class='menu-button'></div>
-			</label>
-			<ul class="menu">
-				<li>Главная</li>
-				<li>Каталог <img src="./icons/Vector.png" alt=""></li>
-				<li>Оптовая продажа</li>
-				<li>О нас</li>
-			</ul>
-			<ul class="contact">
-				<li style="margin-right: -25px;" id="phone"><img src="./icons/phone.png" alt=""></li>
-				<li id="phone">+7 (966) 55 88 499</li>
-				<li><img class="fav" src="./icons/love.png" alt=""></li>
+	<div class="top-nav">
+		<div class="logo">
+			<img src="./icons/Logo.png" alt="">
+		</div>
+		<input id="menu-toggle" type="checkbox" />
+		<label class='menu-button-container' for="menu-toggle">
+			<div class='menu-button'></div>
+		</label>
+		<ul class="menu">
+			<li>Главная</li>
+			<li>Каталог <img src="./icons/Vector.png" alt=""></li>
+			<li>Оптовая продажа</li>
+			<li>О нас</li>
+		</ul>
+		<ul class="contact">
+			<li style="margin-right: -25px;" id="phone"><img src="./icons/phone.png" alt=""></li>
+			<li id="phone">+7 (966) 55 88 499</li>
+			<li><img class="fav" src="./icons/love.png" alt=""></li>
 
-				<li><img class="order" src="./icons/Frame.png" alt=""></li>
-				<li class="account"><img src="./icons/account.png" alt=""></li>
-				<div id="myModal" class="modal">
-					<div class="modal-content">
-						<span class="close"></span>
-						<div class="acc-form">
-							<div class="login">
-								<h1 class="text-center">Вход</h1>
-								<p style="margin-top: 20px;">Пожалуйста, введите Ваш адрес электронной почты и пароль.
-								</p>
-								<input type="mail" placeholder="Email"> <br>
-								<input type="password" placeholder="Password"> <br>
-								<button class="login-btn">Вход</button>
-							</div>
-							<div class="register">
-								<h1 class="text-center">Зарегистрироваться</h1>
-								<input class="email" type="mail" placeholder="Email"> <br>
-								<input class="pass1" type="password" placeholder="Password"><br>
-								<input class="pass2" type="password" placeholder="Confirm Password"> <br>
-								<button class="register-btn">Зарегистрироваться</button>
-							</div>
+			<li><img class="order" src="./icons/Frame.png" alt=""></li>
+			<li class="account"><img src="./icons/account.png" alt=""></li>
+			<div id="myModal" class="modal">
+				<div class="modal-content">
+					<span class="close"></span>
+					<div class="acc-form">
+						<div class="login">
+							<h1 class="text-center">Вход</h1>
+							<p style="margin-top: 20px;">Пожалуйста, введите Ваш адрес электронной почты и пароль.
+							</p>
+							<input type="mail" placeholder="Email"> <br>
+							<input type="password" placeholder="Password"> <br>
+							<button class="login-btn">Вход</button>
+						</div>
+						<div class="register">
+							<h1 class="text-center">Зарегистрироваться</h1>
+							<input class="email" type="mail" placeholder="Email"> <br>
+							<input class="pass1" type="password" placeholder="Password"><br>
+							<input class="pass2" type="password" placeholder="Confirm Password"> <br>
+							<button class="register-btn">Зарегистрироваться</button>
 						</div>
 					</div>
 				</div>
-				<div id="loveModal" class="fav-modal">
-					<div class="fav-modal-content">
-						<h1 class="fav_title">Избранное</h1>
-					</div>
+			</div>
+			<div id="loveModal" class="fav-modal">
+				<div class="fav-modal-content">
+					<h1 class="fav_title">Избранное</h1>
 				</div>
-				<div id="orderModal" class="order-modal">
-					<div class="order-modal-content">
-						<h1 class="ord_title">Корзина</h1>
-						<h1 id="total" class="ord_title"></h1>
-					</div>
+			</div>
+			<div id="orderModal" class="order-modal">
+				<div class="order-modal-content">
+					<h1 class="ord_title">Корзина</h1>
+					<h1 id="total" class="ord_title"></h1>
 				</div>
-			</ul>
-		</section>
+			</div>
+		</ul>
 	</div>
-	<div class="select">
-		<select name="sort" class="sort">
-			<option class="option" disabled selected value="sort">сортировать</option>
-			<option class="option" value="high">По убыванию цены</option>
-			<option class="low" value="low">По возрастанию цены</option>
-			<option value="rating">По рейтингу</option>
-		</select>
+	<div class="select-section">
+		<div class="select-text">
+			<p>
+				<span style="font-weight: bold;">Главная </span>/
+				Каталог
+			</p>
+			<h2 style="margin-top: 10px;">Все Товары
+				(30)</h2>
+		</div>
+		<div class="select">
+			<select name="sort" class="sort">
+				<option class="option" disabled selected value="sort">сортировать</option>
+				<option class="option" value="high">По убыванию цены</option>
+				<option class="low" value="low">По возрастанию цены</option>
+				<option value="rating">По рейтингу</option>
+			</select>
+		</div>
 	</div>
-
 
 
 
@@ -108,7 +115,7 @@
 					<input type="range" class="range-min" min="0" max="2000" value="0" step="10">
 					<input type="range" class="range-max" min="0" max="2000" value="2000" step="10">
 				</div>
-			</div>	
+			</div>
 			<div class="category_inp">
 
 			</div>
